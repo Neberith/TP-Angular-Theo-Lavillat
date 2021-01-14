@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AuthService} from './core/services/auth.service';
 import {SessionService} from './core/services/session.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
 
   constructor(
     private sessionService: SessionService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   get isSignedIn(): boolean {
@@ -22,6 +24,7 @@ export class AppComponent {
   signout(): void {
     AuthService.user = null;
     this.sessionService.clear();
+    this.snackBar.open('Vous avez bien été déconnecté.');
     this.router.navigate(['/auth/signin']);
   }
 

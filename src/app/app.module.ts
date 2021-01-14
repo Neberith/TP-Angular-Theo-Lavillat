@@ -8,10 +8,13 @@ import {CoreModule} from './core/core.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ApiInterceptor} from './core/api.interceptor';
 import {SharedModule} from './shared/shared.module';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LandingComponent } from './Landing/landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LandingComponent,
   ],
   imports: [
     CoreModule,
@@ -19,6 +22,7 @@ import {SharedModule} from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    MatSnackBarModule
   ],
   providers: [
     {
