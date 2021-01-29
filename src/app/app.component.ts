@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from './core/services/auth.service';
 import {SessionService} from './core/services/session.service';
 import {Router} from '@angular/router';
@@ -19,6 +19,19 @@ export class AppComponent {
 
   get isSignedIn(): boolean {
     return AuthService.isSignedIn;
+  }
+
+  get isAdmin(): boolean {
+    if (AuthService.user != null) {
+      if (AuthService.user.roles[0] == "ROLE_ADMIN") {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false
+    }
+
   }
 
   signout(): void {

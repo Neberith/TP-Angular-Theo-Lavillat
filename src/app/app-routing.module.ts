@@ -13,10 +13,16 @@ const routes: Routes = [
     data: { admin: true },
     loadChildren: () => import('./dash/dash.module').then(mod => mod.DashModule),
   },
+  { 
+    path: 'admin',
+    canActivate: [CanActivateGuard],
+    data: { admin: true },
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) 
+  },
   {
     path: '**',
     redirectTo: '/auth/signin'
-  }
+  },
 ];
 
 @NgModule({
